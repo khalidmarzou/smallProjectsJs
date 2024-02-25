@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get Tha Number</title>
+    <style>
+      body {
+        border: 10px solid black;
+        box-shadow: 30px 30px 30px black;
+        margin: 60px;
+        border-radius: 10px;
+        padding: 20px;
+      }
+      h1 {
+        text-align: center;
+        text-decoration: underline;
+        padding: 0;
+        margin: 0;
+        margin-bottom: 15px;
+      }
+      p {
+        text-align: center;
+      }
+      div {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+      }
+      div input {
+        width: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Guess My Number</h1>
+    <div>
+      <label for="">from : </label>
+      <input type="number" min="1" max="100" />
+      <label for="">to : </label>
+      <input type="number" min="1" max="100" />
+      <button class="targetBtn">New target</button>
+    </div>
+    <p>Please guess a number, enter it, and press Guess :</p>
+    <div>
+      <input type="number" id="guessInput" disabled />
+      <button class="guessBtn">Guess</button>
+    </div>
+    <script>
+      let targetBtn = document.querySelector(".targetBtn");
+      let guessBtn = document.querySelector(".guessBtn");
+      let result = document.createElement("h1");
+      let guessNumber;
+      let from;
+      let to;
+      let count = 0;
+      let countP = document.createElement("p");
+      let randomInt;
+      let guessInput = document.getElementById("guessInput");
+      function getRandomInteger(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      }
+      targetBtn.addEventListener("click", () => {
+        from = +document.querySelector("input[type = number]:first-of-type")
+          .value;
+        to = +document.querySelector("input[type = number]:nth-of-type(2)")
+          .value;
+        randomInt = getRandomInteger(from, to);
+        guessInput.setAttribute("max", to);
+        guessInput.setAttribute("min", from);
+        guessInput.removeAttribute("disabled");
+        console.log(guessInput);
+        console.log(randomInt);
+      });
+      function enterRange() {
+        alert("enter range first");
+      }
+      guessBtn.addEventListener("click", () => {
+        if (randomInt === 0) {
+          return enterRange();
+        }
+        count++;
+        countP.innerHTML = "";
+        if (count === 10) {
+          countP.innerHTML = count.toString() + "/10";
+          result.innerHTML = "You Lose";
+          return;
+        } else if (count > 10) {
+          return;
+        }
+        countP.innerHTML = count.toString() + "/10";
+        result.innerHTML = "";
+        guessNumber = +guessInput.value;
+        if (guessNumber < randomInt) {
+          result.innerHTML = "Your number is less than mine";
+        } else if (guessNumber === randomInt) {
+          result.innerHTML = "You Win";
+        } else {
+          result.innerHTML = "My number is less than yours";
+        }
+        document.body.append(result);
+        document.body.append(countP);
+      });
+    </script>
+  </body>
+</html>
