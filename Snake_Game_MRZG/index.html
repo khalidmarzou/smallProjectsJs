@@ -17,12 +17,17 @@
   </head>
   <body class="vh-100 p-0 m-0 d-flex align-items-center">
     <div
+      id="container"
       class="container bg-info h-75 w-50 rounded-3 border border-2 border-danger shadow-lg d-flex align-items-center justify-content-center flex-column"
     >
-      <h1 class="text-primary mb-5 fw-bolder">Snake-Game</h1>
-      <button class="btn btn-success w-25">Start</button>
-      <p class="modal-title mt-5 fw-bolder">Take Control with :</p>
-      <div>
+      <h1 id="title" class="text-primary mb-5 fw-bolder">Snake-Game</h1>
+      <button id="startBtn" class="btn btn-success">
+        <i class="bi bi-controller"></i> Start
+      </button>
+      <p id="takeControl" class="modal-title mt-5 fw-bolder">
+        Take Control with :
+      </p>
+      <div id="icons">
         <div class="d-flex justify-content-center p-1">
           <span class="border"><i class="bi bi-caret-up"></i></span>
         </div>
@@ -34,6 +39,5 @@
       </div>
     </div>
     <script src="index.js"></script>
-    <script src=""></script>
   </body>
 </html>
