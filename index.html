@@ -15,28 +15,52 @@
       crossorigin="anonymous"
     />
     <title>Main</title>
-    <style>
-      #title{
-        margin-bottom: 7vw !important;
-        margin-top: 3vw !important;
-        font-weight: bold;
-      }
-      nav{
-        overflow: hidden;
-      }
-      
-      @media (max-width:800px){
-        #title{
-          font-size: 8vw !important;
-          
-        }
-        .card-title{
-            font-size: 10vw !important;
-          }
-      }
-    </style>
   </head>
   <body>
+  <!--about Us-->
+  <div
+      id="aboutUs"
+      class="d-none container text-bg-dark w-50 h-75 rounded-3 opacity-75 mt-auto mb-auto position-fixed top-50 start-50"
+    >
+      <div class="modal-header d-flex justify-content-end pt-2">
+        <button
+          id="btnClose"
+          class="btn-close btn-close-white p-1 rounded-0"
+        ></button>
+      </div>
+      <div class="container h-75 mt-4">
+        <div
+          class="card d-flex flex-row h-50 mb-2 bg-transparent text-white border border-2 border-primary"
+        >
+          <img
+            class="card-img"
+            src="media/aboutUs1.jpg"
+            alt="image one in about Us"
+          />
+          <p class="card-text text-center p-3 d-flex align-items-center initialism">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati,
+            impedit mollitia magni eos rerum voluptatem dolor aut debitis ea,
+            sed dignissimos nam praesentium libero eaque iure voluptas nobis,
+            amet ipsa?
+          </p>
+        </div>
+        <div
+          class="card d-flex flex-row-reverse h-50 mt-2 bg-transparent text-white border border-2 border-info"
+        >
+          <img
+            class="card-img"
+            src="media/aboutUs.jpeg"
+            alt="image two in about Us"
+          />
+          <p class="card-text text-center p-3 d-flex align-items-center initialism">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
+            accusamus at accusantium praesentium eum, voluptate libero nobis
+            explicabo. Neque adipisci, id sunt velit facere consequatur possimus
+            repellendus impedit in amet?
+          </p>
+        </div>
+      </div>
+    </div>
     <!--nav-->
     <nav class="navbar navbar-expand-md bg-dark navbar-dark fs-4 py-3">
       <div
@@ -53,7 +77,7 @@
 
         <ul class="navbar-nav gap-4 ms-5">
           <li class="nav-item"><a href="" class="nav-link">HOME</a></li>
-          <li class="nav-item"><a href="" class="nav-link">ABOUT</a></li>
+          <li class="nav-item"><a href="#" id="linkAboutUs" class="nav-link">ABOUT</a></li>
           <li class="nav-item"><a href="" class="nav-link">CONTACT US</a></li>
         </ul>
       </div>
@@ -135,5 +159,7 @@
         </div>
       </div>
     </div>
+	
+	<script src="script.js"></script>
   </body>
 </html>
