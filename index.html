@@ -15,6 +15,26 @@
       crossorigin="anonymous"
     />
     <title>Main</title>
+    <style>
+      #title{
+        margin-bottom: 7vw !important;
+        margin-top: 3vw !important;
+        font-weight: bold;
+      }
+      nav{
+        overflow: hidden;
+      }
+      
+      @media (max-width:800px){
+        #title{
+          font-size: 8vw !important;
+          
+        }
+        .card-title{
+            font-size: 10vw !important;
+          }
+      }
+    </style>
   </head>
   <body>
     <!--nav-->
@@ -24,7 +44,7 @@
       >
         <a class="navbar-brand ms-2" href="#">
           <img
-            src="media/Logo.png"
+            src="media/logo.png"
             alt=""
             height="28"
             class="d-inline-block align-text-top"
@@ -40,10 +60,10 @@
     </nav>
     <!--Header or big h1-->
 
-    <div class="container-fluid my-5">
+    <div class="container-fluid my-5" >
       <p
         class="h1 text-center text-decoration-underline"
-        style="font-size: 5rem; font-style: italic"
+        style="font-size: 6vw; font-style: italic" id="title"
       >
         Welcome To MMS Group!
       </p>
@@ -51,10 +71,10 @@
 
     <!--cards-->
     <div class="container-fluid py-5 mt-5">
-      <div class="row">
+      <div class="row gx-2 gy-sm-5 justify-content-center">
         <div
-          class="container-fluid col-md-4 col-12 text-center"
-          style="width: 32%"
+          class="container  col-lg-4 w- 30 col-sm-12 text-center mb-3"
+          
         >
           <div
             class="card border border-5 border-dark rounded-5"
@@ -62,7 +82,7 @@
           >
             <img src="media/Khalid.jpg" class="card-img-top" alt="..." />
             <div class="card-body h-25 pt-1">
-              <h1 class="card-title mt-1 mb-3" style="font-size: 4.3rem">
+              <h1 class="card-title mt-1 mb-3 f-1" >
                 KHALID
               </h1>
 
@@ -74,8 +94,8 @@
         </div>
 
         <div
-          class="container-fluid col-md-4 col-12 text-center"
-          style="width: 32%"
+          class="container col-lg-4 w- 30 col-sm-12 text-center mb-3"
+          
         >
           <div
             class="card border border-5 border-dark rounded-5"
@@ -83,31 +103,31 @@
           >
             <img src="media/Anas.webp" class="card-img-top" alt="..." />
             <div class="card-body h-25 pt-1">
-              <h1 class="card-title mt-1 mb-3" style="font-size: 4.3rem">
+              <h1 class="card-title mt-1 mb-3 f-1" >
                 ANAS
               </h1>
 
-              <a href="KHALID/index.html" class="btn btn-success py-1 px-4 fs-2"
+              <a href="ANAS/" class="btn btn-success py-1 px-4 fs-2"
                 >Visit Page</a
               >
             </div>
           </div>
         </div>
         <div
-          class="container-fluid col-md-4 col-12 text-center"
-          style="width: 32%"
-        >
+        class="container col-lg-4 w- 30 col-sm-12 text-center mb-3"
+        
+      >
           <div
             class="card border border-5 border-dark rounded-5"
             style="overflow: hidden"
           >
             <img src="media/Zakaria.jpeg" class="card-img-top" alt="..." />
             <div class="card-body h-25 pt-1">
-              <h1 class="card-title mt-1 mb-3" style="font-size: 4.3rem">
+              <h1 class="card-title mt-1 mb-3 f-1" >
                 ZAKARIA
               </h1>
 
-              <a href="KHALID/index.html" class="btn btn-success py-1 px-4 fs-2"
+              <a href="ZAKARIA/" class="btn btn-success py-1 px-4 fs-2"
                 >Visit Page</a
               >
             </div>
