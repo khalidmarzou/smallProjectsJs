@@ -1,10 +1,17 @@
 #title{
-        margin-bottom: 7vw !important;
-        margin-top: 3vw !important;
+        margin-bottom: 2.7vw !important;
+        margin-top: 1.3vw !important;
         font-weight: bold;
       }
       nav{
         overflow: hidden;
+      }
+
+      @media (min-width:800px){
+        .w-lg-25{
+          width: 25% !important;
+        }
+
       }
       
       @media (max-width:800px){
