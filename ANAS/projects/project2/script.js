@@ -3,58 +3,100 @@ const ctx = canvas.getContext("2d")
 
 
 
-let x=150;
-let y=140;
-let vxl = 0;
-let vxr = 0;
-let vyt = 0;
-let vyb = 0;
 
 
-function  update() {
-  ctx.clearRect(0,0,canvas.width,canvas.height)
-  x += vxr;
-  x += vxl;
-  y += vyt;
-  y += vyb;
-  console.log(y)
-  if (x >= canvas.width-8){
-    x-=3;
-    
+
+
+class Player{
+  constructor(){
+    this.x=150;
+    this.y=140;
+    this.vxl =0;
+    this.vxr=0;
+    this.vyt=0;
+    this.vyb=0;
   }
-  if (x <= -3){
-    x+=3;
+  draw(){
+    ctx.fillStyle = "red"
+    ctx.fillRect(this.x,this.y,10,10)
+  }
+  update(){
+      this.x += this.vxr;
+      this.x += this.vxl;
+      this.y += this.vyt;
+      this.y += this.vyb;
+     
+      if (this.x >= canvas.width-8){
+        this.x-=3;
+        
+      }
+      if (this.x <= -3){
+        this.x+=3;
+        
+      }
+    
+      if (this.y > canvas.height-9){
+        this.y-=3;
+        
+      }
+      if (this.y <= -3){
+        this.y+=3;
+        
+      }
+      this.draw()
+    }
     
   }
 
-  if (y > canvas.height-9){
-    y-=3;
-    
-  }
-  if (y <= -3){
-    y+=3;
-    
-  }
-  ctx.fillStyle = "red"
-    ctx.fillRect(x,y,10,10)
-    requestAnimationFrame(update)
+
+  class Projectiles{
+    constructor(x, y, velocity){
+      this.x = x;
+      this.y = y;
+      this.velocity = velocity
+    }
+    draw(){
+      ctx.fillStyle = "green"
+      ctx.fillRect(this.x,this.y,3,3)
   
-}
+    }
+    update(){
+     
+      this.y -= this.velocity
+      this.draw()
+    }
+  }
 
-update()
 
-// Event handler
+
+const p1 = new Player()
+
+const projectiles = []
+animate()
+console.log(p1)
+
+document.addEventListener("keypress", (event) =>{
+  if (event.keyCode == 32){
+    
+     projectiles.push(new Projectiles(p1.x+2.9,p1.y,5) )
+     console.log(projectiles)
+  }
+})
+
+
+
+
 document.addEventListener("keydown", (event) =>{
   if (event.keyCode == 39){
     
-    vxl = 3;
+    p1.vxl = 3;
   }
 })
 
 document.addEventListener("keyup", (event) =>{
   if (event.keyCode == 39){
     
-    vxl = 0;
+    p1.vxl = 0;
   }
 })
 
@@ -62,44 +104,45 @@ document.addEventListener("keyup", (event) =>{
 document.addEventListener("keydown", (event) =>{
   if (event.keyCode == 37){
     
-    vxr = -3;
+    p1.vxr = -3;
   }
 })
 
 document.addEventListener("keyup", (event) =>{
   if (event.keyCode == 37){
     
-    vxr = 0;
+    p1.vxr = 0;
   }
 })
 
 document.addEventListener("keydown", (event) =>{
   if (event.keyCode == 40){
     
-    vyb = 3;
+    p1.vyb = 3;
   }
 })
 
 document.addEventListener("keyup", (event) =>{
   if (event.keyCode == 40){
     
-    vyb = 0;
+    p1.vyb = 0;
   }
 })
 
 document.addEventListener("keydown", (event) =>{
   if (event.keyCode == 38){
     
-    vyt = -3;
+    p1.vyt = -3;
   }
 })
 
 document.addEventListener("keyup", (event) =>{
   if (event.keyCode == 38){
     
-    vyt = 0;
+    p1.vyt = 0;
   }
 })
+
 
 
 
@@ -112,3 +155,14 @@ document.addEventListener("keyup", (event) =>{
     
 
 
+function animate(){
+  requestAnimationFrame(animate)
+  ctx.clearRect(0,0,canvas.width,canvas.height)
+  p1.update()
+  for (proj of projectiles){
+    proj.update()
+      setTimeout(()=>{if (proj.y <0 ){projectiles.splice(proj);}}, 1);
+    }
+  }
+  
+  
