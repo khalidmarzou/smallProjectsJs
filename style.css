@@ -31,3 +31,9 @@
           width: 75% !important;
         }
       }
+
+
+
+.blur{
+  filter: blur(3.5px);
+}
