@@ -3,6 +3,7 @@ const ctx = canvas.getContext("2d")
 
 
 
+let keysPressed = {};
 
 
 
@@ -75,27 +76,74 @@ const projectiles = []
 animate()
 console.log(p1)
 
-document.addEventListener("keypress", (event) =>{
+let solde = 40;
+
+document.addEventListener("keydown", (event) =>{
+    
+    keysPressed[event.keyCode] = true;
+    
+
   if (event.keyCode == 32){
     
-     projectiles.push(new Projectiles(p1.x+2.9,p1.y,5) )
-     console.log(projectiles)
+      if (solde != 0){ 
+        projectiles.push(new Projectiles(p1.x+2.9,p1.y,5) )
+        solde -= 1;
+      } 
   }
+
+  
+ 
+})
+
+document.addEventListener("keyup", (event) =>{
+    
+  
+  
+
+if (event.keyCode == 32){
+  delete keysPressed[event.keyCode]
+    
+}
+
+
+
 })
 
 
 
 
 document.addEventListener("keydown", (event) =>{
+  
+  if (event.keyCode == 82){
+        solde += 40;
+  }
+ 
+})
+
+
+
+document.addEventListener("keydown", (event) =>{
   if (event.keyCode == 39){
+    
     
     p1.vxl = 3;
   }
+
+  if (event.keyCode == 39 && keysPressed['32']){
+    if (solde != 0){ 
+      projectiles.push(new Projectiles(p1.x+2.9,p1.y,5) )
+      solde -= 1;
+    } 
+    
+    
+  }
+
+  
 })
 
 document.addEventListener("keyup", (event) =>{
   if (event.keyCode == 39){
-    
+   
     p1.vxl = 0;
   }
 })
@@ -106,7 +154,17 @@ document.addEventListener("keydown", (event) =>{
     
     p1.vxr = -3;
   }
+  if (event.keyCode == 37 && keysPressed['32']){
+  if (solde != 0){ 
+    projectiles.push(new Projectiles(p1.x+2.9,p1.y,5) )
+    solde -= 1;
+  } 
+  
+  
+}
 })
+
+
 
 document.addEventListener("keyup", (event) =>{
   if (event.keyCode == 37){
@@ -115,11 +173,18 @@ document.addEventListener("keyup", (event) =>{
   }
 })
 
+
+
 document.addEventListener("keydown", (event) =>{
   if (event.keyCode == 40){
     
     p1.vyb = 3;
   }
+  if (event.keyCode == 40 && keysPressed['32']){
+    if (solde != 0){ 
+      projectiles.push(new Projectiles(p1.x+2.9,p1.y,5) )
+      solde -= 1;
+    } }
 })
 
 document.addEventListener("keyup", (event) =>{
@@ -134,6 +199,12 @@ document.addEventListener("keydown", (event) =>{
     
     p1.vyt = -3;
   }
+
+  if (event.keyCode == 38 && keysPressed['32']){
+    if (solde != 0){ 
+      projectiles.push(new Projectiles(p1.x+2.9,p1.y,5) )
+      solde -= 1;
+    } }
 })
 
 document.addEventListener("keyup", (event) =>{
@@ -161,7 +232,7 @@ function animate(){
   p1.update()
   for (proj of projectiles){
     proj.update()
-      setTimeout(()=>{if (proj.y <0 ){projectiles.splice(proj);}}, 1);
+      setTimeout(()=>{if (proj.y <0 ){projectiles.splice(proj);}}, 0);
     }
   }
   
